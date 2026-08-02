@@ -99,13 +99,11 @@ def load_assets():
     except Exception as e:
         missing_files.append(f"`tokenizer.pkl` (Error: {str(e)})")
 
-    # 3. Load Columns Definition via Joblib
+    # 3. Load Columns Definition via Joblib (Optional)
     try:
         columns = joblib.load("columns.pkl")
-    except FileNotFoundError:
-        missing_files.append("`columns.pkl`")
-    except Exception as e:
-        missing_files.append(f"`columns.pkl` (Error: {str(e)})")
+    except Exception:
+        columns = None
 
     return model, tokenizer, columns, missing_files
 
@@ -141,13 +139,13 @@ if submit_btn and is_ready:
         st.warning("⚠️ Please provide either a review headline or a summary text.")
     else:
         try:
-            # 1. Create DataFrame matching training format screenshot
+            # 1. Create DataFrame matching training format
             input_df = pd.DataFrame([{
                 "Review": review_str,
                 "Summary": summary_str
             }])
             
-            # 2. Apply screenshot transformations: combine and drop columns
+            # 2. Combine and drop original columns
             input_df["Text"] = input_df["Review"] + " " + input_df["Summary"]
             input_df.drop(["Review", "Summary"], axis=1, inplace=True)
             
@@ -162,30 +160,31 @@ if submit_btn and is_ready:
             except Exception as e:
                 raise RuntimeError(f"Tokenizer error: {str(e)}")
 
-            # 5. Sequence Padding
+            # 5. Sequence Padding (Explicitly setting maxlen=100 as expected by ExtraTrees)
             try:
-                max_len = len(columns) if hasattr(columns, '__len__') else 100
-                padded_sequence = pad_sequences(sequences, maxlen=max_len, padding='post')
+                # Infer max sequence length dynamically or default to 100
+                if hasattr(model, "n_features_in_"):
+                    expected_len = model.n_features_in_
+                elif columns is not None and hasattr(columns, "__len__"):
+                    expected_len = len(columns)
+                else:
+                    expected_len = 100
+
+                padded_sequence = pad_sequences(sequences, maxlen=expected_len, padding='post')
             except Exception as e:
                 raise RuntimeError(f"Padding error: {str(e)}")
 
-            # 6. Column Alignment with Model Schema
+            # 6. Model Inference (Pass 2D padded numpy array directly)
             try:
-                if hasattr(columns, '__len__') and not isinstance(columns, int):
-                    final_input = pd.DataFrame(padded_sequence, columns=columns)
-                else:
-                    final_input = padded_sequence
-            except Exception:
-                final_input = padded_sequence
-
-            # 7. Model Inference
-            try:
+                # Ensure input is 2D numpy array with 100 features
+                final_input = np.array(padded_sequence)
+                
                 prediction = model.predict(final_input)[0]
                 predicted_rate = int(round(float(prediction))) if isinstance(prediction, (np.number, float, int)) else prediction
             except Exception as e:
                 raise RuntimeError(f"Inference error: {str(e)}")
 
-            # 8. Render Results
+            # 7. Render Results
             st.markdown("---")
             st.markdown("### 📊 Prediction Result")
             

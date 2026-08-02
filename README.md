@@ -14,7 +14,7 @@ An End-to-End **Natural Language Processing (NLP)** web application that predict
 
 ## 🔗 Live Application
 
-Access the interactive live web interface:  
+Access the interactive live web application:  
 👉 **[Click Here to Launch Live Application](YOUR_LIVE_APP_LINK_HERE)**
 
 ---
@@ -27,24 +27,24 @@ During the development and experimental phase, multiple model architectures were
 
 - **High Loss & Accuracy Fluctuations:** Training an ANN architecture led to severe epoch-to-epoch instability in both accuracy and training loss.
 - **Validation Loss Stagnation:** The test/validation loss failed to converge effectively, indicating that deep neural layers were struggling to generalize on the sparse TF-IDF text matrix without overfitting.
-- **Decision:** The ANN approach was discarded due to unpredictable performance and poor generalization on test data.
+- **Decision:** The ANN approach was discarded due to unpredictable performance and poor generalization on unseen test data.
 
 ### 🏆 Machine Learning Approach (Selected Solution)
 
 - **Stable Generalization:** Transitioned to traditional Machine Learning classification algorithms which provided consistent convergence.
-- **High Test Performance:** The final trained ML model achieved a **83% Test Accuracy**, successfully resolving the variance/loss issues observed in the ANN model while ensuring fast, reliable inference for real-time web deployment.
+- **High Test Performance:** The final trained ML model achieved an **83% Test Accuracy**, successfully resolving the variance/loss issues observed in the ANN model while ensuring fast, reliable inference for real-time web deployment.
 
 ---
 
 ## ⚙️ Data Preprocessing & NLP Pipeline
 
-The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into a single target feature string `Text`. Custom text normalization is applied prior to tokenization:
+The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into a single feature string `Text`. Custom text normalization is applied prior to tokenization:
 
 1. **Punctuation Removal:** Cleans standard punctuation marks using `str.maketrans`.
 2. **Lowercasing:** Standardizes characters to lowercase.
 3. **Digit Removal:** Strips numeric digits from input text.
 4. **Emoji & Non-ASCII Removal:** Filters non-ASCII characters to retain clean English tokens.
-5. **Vectorization:** Transforms normalized text into numeric matrices using serialized `tokenizer.pkl`.
+5. **Vectorization:** Transforms normalized text into numeric matrices using the serialized `tokenizer.pkl`.
 
 ---
 

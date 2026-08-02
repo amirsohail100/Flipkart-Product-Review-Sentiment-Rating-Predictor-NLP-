@@ -4,6 +4,12 @@ import string
 import pandas as pd
 import numpy as np
 
+# Import TensorFlow sequence padder for TF Tokenizer
+try:
+    from tensorflow.keras.preprocessing.sequence import pad_sequences
+except ImportError:
+    from keras.preprocessing.sequence import pad_sequences
+
 # --- Page Configuration ---
 st.set_page_config(
     page_title="Flipkart Review Rating Predictor",
@@ -81,17 +87,23 @@ else:
             # 2. Apply Custom NLP Text Preprocessing
             cleaned_text = preprocess_text(combined_text)
             
-            # 3. Vectorize / Tokenize Text
+            # 3. TensorFlow Tokenizer Sequence Conversion & Padding
             try:
-                text_vector = tokenizer.transform([cleaned_text])
+                # Convert text to sequence using TensorFlow Keras Tokenizer
+                sequences = tokenizer.texts_to_sequences([cleaned_text])
                 
-                if hasattr(text_vector, "toarray"):
-                    text_df = pd.DataFrame(text_vector.toarray())
+                # Infer maxlen from columns or default length
+                max_len = len(columns) if hasattr(columns, '__len__') else 100
+                padded_sequence = pad_sequences(sequences, maxlen=max_len, padding='post')
+                
+                # Convert to DataFrame matching model columns if columns.pkl contains column names
+                if hasattr(columns, '__len__') and not isinstance(columns, int):
+                    input_data = pd.DataFrame(padded_sequence, columns=columns)
                 else:
-                    text_df = pd.DataFrame(text_vector)
+                    input_data = padded_sequence
 
                 # 4. Model Prediction
-                prediction = model.predict(text_df)[0]
+                prediction = model.predict(input_data)[0]
                 predicted_rate = int(round(float(prediction))) if isinstance(prediction, (np.number, float, int)) else prediction
 
                 # 5. Display UI Results

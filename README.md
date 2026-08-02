@@ -58,6 +58,6 @@ The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into 
 ├── tokenizer.pkl          # Fitted TF-IDF / Vectorizer Object
 ├── columns.pkl            # Feature Column Schema Definitions
 └── README.md              # Documentation
+```
 
 End-to-End Flipkart product review rating predictor powered by NLP & Extra Trees Classifier (83.2% test accuracy). Features custom text preprocessing, TensorFlow Tokenizer sequence padding, and an interactive Streamlit UI designed to replace unstable ANN training architectures.
-```

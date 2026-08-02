@@ -19,6 +19,23 @@ Access the interactive live web interface:
 
 ---
 
+## 💡 Model Selection & Engineering Challenges
+
+During the development and experimental phase, multiple model architectures were evaluated:
+
+### ❌ Artificial Neural Network (ANN) Limitations
+
+- **High Loss & Accuracy Fluctuations:** Training an ANN architecture led to severe epoch-to-epoch instability in both accuracy and training loss.
+- **Validation Loss Stagnation:** The test/validation loss failed to converge effectively, indicating that deep neural layers were struggling to generalize on the sparse TF-IDF text matrix without overfitting.
+- **Decision:** The ANN approach was discarded due to unpredictable performance and poor generalization on test data.
+
+### 🏆 Machine Learning Approach (Selected Solution)
+
+- **Stable Generalization:** Transitioned to traditional Machine Learning classification algorithms which provided consistent convergence.
+- **High Test Performance:** The final trained ML model achieved a **83% Test Accuracy**, successfully resolving the variance/loss issues observed in the ANN model while ensuring fast, reliable inference for real-time web deployment.
+
+---
+
 ## ⚙️ Data Preprocessing & NLP Pipeline
 
 The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into a single target feature string `Text`. Custom text normalization is applied prior to tokenization:
@@ -35,9 +52,9 @@ The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into 
 
 ```text
 ├── flipkart_product.csv   # Primary Product Reviews Dataset
-├── notebook.ipynb         # EDA, Text Normalization & Model Training
+├── notebook.ipynb         # EDA, Text Normalization & Model Experiments
 ├── app.py                 # Interactive Streamlit Web Application
-├── model.pkl              # Serialized Trained Machine Learning Classifier
+├── model.pkl              # Serialized Trained Machine Learning Classifier (83% Test Acc)
 ├── tokenizer.pkl          # Fitted TF-IDF / Vectorizer Object
 ├── columns.pkl            # Feature Column Schema Definitions
 └── README.md              # Documentation

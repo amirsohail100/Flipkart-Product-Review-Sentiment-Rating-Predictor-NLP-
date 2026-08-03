@@ -60,6 +60,7 @@ The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into 
 ├── model.pkl              # Serialized Trained Machine Learning Classifier (83% Test Acc)
 ├── tokenizer.pkl          # Fitted TF-IDF / Vectorizer Object
 ├── columns.pkl            # Feature Column Schema Definitions
+├── UI.png                 # Application UI Preview
 └── README.md              # Documentation
 ```
 

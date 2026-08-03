@@ -63,6 +63,14 @@ The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into 
 ```
 
 ```bash
+git clone https://github.com/amirsohail100/Flipkart-Product-Review-Sentiment-Rating-Predictor-NLP-.git
+```
+
+```bash
+cd Flipkart-Product-Review-Sentiment-Rating-Predictor-NLP-
+```
+
+```bash
 streamlit run app.py
 ```
 

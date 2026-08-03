@@ -60,6 +60,10 @@ The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into 
 └── README.md              # Documentation
 ```
 
+## 📄 License
+
+This project is licensed under the MIT License.
+
 ## 📝 Author
 
 ## 👤 **Amir Sohail**

@@ -63,6 +63,10 @@ The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into 
 ```
 
 ```bash
+streamlit run app.py
+```
+
+```bash
 pip install -r requirements.txt
 ```
 

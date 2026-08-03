@@ -62,6 +62,8 @@ The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into 
 └── README.md              # Documentation
 ```
 
+---
+
 ```bash
 git clone https://github.com/amirsohail100/Flipkart-Product-Review-Sentiment-Rating-Predictor-NLP-.git
 ```
@@ -70,13 +72,19 @@ git clone https://github.com/amirsohail100/Flipkart-Product-Review-Sentiment-Rat
 cd Flipkart-Product-Review-Sentiment-Rating-Predictor-NLP-
 ```
 
+---
+
 ```bash
 streamlit run app.py
 ```
 
+---
+
 ```bash
 pip install -r requirements.txt
 ```
+
+---
 
 ## 📄 License
 

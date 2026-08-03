@@ -62,6 +62,10 @@ The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into 
 └── README.md              # Documentation
 ```
 
+```bash
+pip install -r requirements.txt
+```
+
 ## 📄 License
 
 This project is licensed under the MIT License.

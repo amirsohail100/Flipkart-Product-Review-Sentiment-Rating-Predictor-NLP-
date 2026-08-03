@@ -52,6 +52,8 @@ The input dataset (`flipkart_product.csv`) combines `Review` and `Summary` into 
 
 ```text
 ├── flipkart_product.csv   # Primary Product Reviews Dataset
+├── .gitignore             # Git Ignore File
+├── .gitattributes         # Git Attributes File
 ├── notebook.ipynb         # EDA, Text Normalization & Model Experiments
 ├── app.py                 # Interactive Streamlit Web Application
 ├── model.pkl              # Serialized Trained Machine Learning Classifier (83% Test Acc)

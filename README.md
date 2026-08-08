@@ -18,7 +18,7 @@ An End-to-End **Natural Language Processing (NLP)** web application that predict
 
 ## 🖼️ Application Preview
 
-![Flipkart Review Rating Predictor](YOUR_IMAGE_PREVIEW_URL_HERE)
+![Flipkart Review Rating Predictor](UI.png)
 
 ---
 

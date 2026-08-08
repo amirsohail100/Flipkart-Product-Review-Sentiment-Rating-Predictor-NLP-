@@ -6,6 +6,16 @@ An End-to-End **Natural Language Processing (NLP)** web application that predict
 
 ---
 
+### _Next-Generation Vocal Acoustic Analytics for Emergency Triage Scoring_
+
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://tensorflow.org)
+[![Keras](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=keras&logoColor=white)](https://keras.io)
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
+[![Accuracy](https://img.shields.io/badge/Val_R²_Accuracy-96.90%25-brightgreen?style=for-the-badge)](#-model-training--accuracy-graphs)
+[![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+
+---
+
 ## 🖼️ Application Preview
 
 ![Flipkart Review Rating Predictor](YOUR_IMAGE_PREVIEW_URL_HERE)

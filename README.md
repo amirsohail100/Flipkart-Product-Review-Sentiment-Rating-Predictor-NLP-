@@ -74,19 +74,13 @@ git clone https://github.com/amirsohail100/Flipkart-Product-Review-Sentiment-Rat
 cd Flipkart-Product-Review-Sentiment-Rating-Predictor-NLP-
 ```
 
----
-
 ```bash
 streamlit run app.py
 ```
 
----
-
 ```bash
 pip install -r requirements.txt
 ```
-
----
 
 ## 📄 License
 

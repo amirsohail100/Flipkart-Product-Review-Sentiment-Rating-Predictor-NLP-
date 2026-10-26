@@ -85,7 +85,7 @@ def load_assets():
 
     # 1. Load Model via Joblib
     try:
-        model = joblib.load("model.pkl")
+        model = joblib.load("models/model.pkl")
     except FileNotFoundError:
         missing_files.append("`model.pkl`")
     except Exception as e:
@@ -93,7 +93,7 @@ def load_assets():
 
     # 2. Load Tokenizer via Joblib
     try:
-        tokenizer = joblib.load("tokenizer.pkl")
+        tokenizer = joblib.load("models/tokenizer.pkl")
     except FileNotFoundError:
         missing_files.append("`tokenizer.pkl`")
     except Exception as e:
@@ -101,7 +101,7 @@ def load_assets():
 
     # 3. Load Columns Definition via Joblib (Optional)
     try:
-        columns = joblib.load("columns.pkl")
+        columns = joblib.load("models/columns.pkl")
     except Exception:
         columns = None
 

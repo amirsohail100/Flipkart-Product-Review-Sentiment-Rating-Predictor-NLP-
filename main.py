@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field
+from schemas.payload import Inputs
 from joblib import load
-from fun import remove_num, remove_emoj, remove_other, remove_punc
+from utils.fun import remove_num, remove_emoj, remove_other, remove_punc
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from typing import Literal
@@ -20,23 +20,9 @@ Max_len = 100
 Max_words = 10000
 Embedding_dim = 100
 
-model = load('model.pkl')
-tokenizer = load('tokenizer.pkl')
-COLUMNS = load('columns.pkl')
-
-class Inputs(BaseModel):
-
-    Review : str = Field(
-        ...,
-        max_length=1000,
-        min_length=1,
-    )
-    Summary : str = Field(
-        ...,
-        max_length=50,
-        min_length=1,
-    )
-
+model = load('models/model.pkl')
+tokenizer = load('models/tokenizer.pkl')
+COLUMNS = load('models/columns.pkl')
 
 @app.get("/")
 def read_root():
